@@ -29,3 +29,11 @@ df = pd.DataFrame(data)
 
 # Display the first 5 rows of the data
 print(df.head())
+
+# Some basic statistics about Age and Salary
+age_stats = df['Age'].describe()
+salary_stats = df['Salary'].describe()
+
+print("\nAge Statistics:\n", age_stats)
+print("\nSalary Statistics:\n", salary_stats)
+
