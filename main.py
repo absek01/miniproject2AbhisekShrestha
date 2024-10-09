@@ -7,7 +7,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 from faker import Faker
-import numpy as np
 
 # Create a "charts" folder if it doesn't exist
 if not os.path.exists('charts'):
@@ -55,7 +54,7 @@ plt.savefig('charts/salary_distribution.png')  # Save the chart as a PNG file
 
 # Bar chart showing average salary by age group
 age_groups = pd.cut(df['Age'], bins=[18, 30, 40, 50, 60, 80], labels=["18-30", "31-40", "41-50", "51-60", "61+"])
-avg_salary_by_age = df.groupby(age_groups)['Salary'].mean()
+avg_salary_by_age = df.groupby(age_groups, observed=False)['Salary'].mean()
 
 plt.figure(figsize=(10,6))
 avg_salary_by_age.plot(kind='bar', color='orange', edgecolor='black')
